@@ -1,9 +1,9 @@
 Package: montyhall
-Title: What the Package Does (One Line, Title Case)
+Title: Monty Hall Simulations (2 Goats, 1 Car)
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Michelle", "Hsu", , "michel48@asu.edu", role = c("aut", "cre"))
+Description: This package allows you to do a single or multiple simulations of the Monty Hall game. This is a similar set up to how Let's Make A Deal does their final game with three doors with a car behind one of them and the two other doors having jokey or less valuable items. The default set up is with three doors, one with a car and the other two being goats. The package will go through a specified n iterations of the game including a built in n=100 function. The package will also return in the end whether or not the contestant won or lost. 
 Depends: 
    dplyr
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a

@@ -35,11 +35,16 @@ create_game <- function(num.goats=2,num.cars=1)
 
 
 #' @title
+#'  Contestant will select a door
+#'  
 #' @description
 #' @details
-#' @param
-#' @return
+#' @param ... no arguments are used by the function.
+#' @return The function returns a number that represents 
+#' what door the contestant chose.
+#' 
 #' @examples
+#'   
 #' @export
 select_door <- function( )
 {
@@ -51,11 +56,20 @@ select_door <- function( )
 
 
 #' @title
+#'  Host will open a goat door
+#'  
 #' @description
 #' @details
-#' @param
+#' @param 
 #' @return
 #' @examples
+#' game.output <- create.game()
+#' game.output
+#' my.initial.pick <- select.door()
+#' my.initial.pick
+#' 
+#' open.goat.door( game.output, my.initial.pick )
+#' 
 #' @export
 open_goat_door <- function( game, a.pick )
 {
@@ -77,6 +91,8 @@ open_goat_door <- function( game, a.pick )
 
 
 #' @title
+#'  Contestant stays or switches their initial door
+#'  
 #' @description
 #' @details
 #' @param
@@ -102,6 +118,8 @@ change_door <- function( stay=T, opened.door, a.pick )
 
 
 #' @title
+#'  Determine if the contestant wins
+#'  
 #' @description
 #' @details
 #' @param
@@ -125,6 +143,8 @@ determine_winner <- function( final.pick, game )
 
 
 #' @title
+#'  Let's play a game!
+#'  
 #' @description
 #' @details
 #' @param
@@ -151,11 +171,9 @@ play_game <- function( )
 }
 
 
-
-
-
-
 #' @title
+#'  Let's play 100 games!!
+#'  
 #' @description
 #' @details
 #' @param
