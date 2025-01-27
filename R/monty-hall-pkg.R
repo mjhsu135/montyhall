@@ -39,7 +39,8 @@ create_game <- function(num.goats=2,num.cars=1)
 #' `select_door()` generates a number that correlates to one of the three doors. 
 #' 
 #' @details
-#' This number represents the door the contestant chooses initially at the beginning
+#' This number represents the door the contestant chooses 
+#' initially at the beginning
 #' of the game.
 #' 
 #' @param ... no arguments are used by the function.
@@ -58,23 +59,27 @@ select_door <- function( )
   return( a.pick )  # number between 1 and 3
 }
 
-
-
 #' @title
 #'  Host will open a goat door
 #'  
 #' @description 
-#' `open_goat_door()` generates a number that represents a goat door that the host opens. 
+#' `open_goat_door()` generates a number that represents a goat 
+#' door that the host opens. 
 #' 
 #' @details
-#' The number that is generated correlates to the door that the host chooses.
-#' It will always be a goat door and it will never be the same door that the contestant
+#' The number that is generated correlates to 
+#' the door that the host chooses.
+#' It will always be a goat door and it will never be 
+#' the same door that the contestant
 #' has already chosen. 
 #' 
-#' @param create_game a vector representing the current game setup in the form of
-#' how many goats there are and how many cars there are (ex: c("goat", "goat", "car"))
+#' @param create_game a vector representing the 
+#' current game setup in the form of
+#' how many goats there are and how many 
+#' cars there are (ex: c("goat", "goat", "car"))
 #' 
-#' @param select.door a numeric representing the door the contestant chooses which is 
+#' @param select.door a numeric representing 
+#' the door the contestant chooses which is 
 #' correlated to the vector that represents the game setup. 
 #' 
 #' @return a number that is correlated to a goat door but is not 
@@ -106,32 +111,39 @@ open_goat_door <- function( game, a.pick )
    return( opened.door ) # number between 1 and 3
 }
 
-
-
 #' @title
 #'  Contestant stays or switches their initial door
 #'  
 #' @description 
-#' `change_door()` is a function that determines if the contestant will change the door
+#' `change_door()` is a function that determines if the 
+#' contestant will change the door
 #' and what their next chosen door is. It will generate a numeric. 
 #' 
 #' @details
-#' This number that is generated will either be the same number as the initial pick
-#' if the contestant stays or it will be a number that is not what they initially chose nor
+#' This number that is generated will either be 
+#' the same number as the initial pick
+#' if the contestant stays or it will be a number 
+#' that is not what they initially chose nor
 #' a number that correlates to the door the host has chosen.
 #' 
-#' @param stay=T A logical where if stay is T or TRUE, then the code will keep the contestant's
+#' @param stay=T A logical where if stay is T or TRUE, 
+#' then the code will keep the contestant's
 #' initial choice, that is, the previous parameter "select.door".
 #' 
-#' @param stay=F A logical where if stay is F or FALSE, then the code will change the contestant's
-#' initial choice, that is, the previous parameter "select.door" will be changed to a 
+#' @param stay=F A logical where if stay is F or FALSE, 
+#' then the code will change the contestant's
+#' initial choice, that is, the previous parameter 
+#' "select.door" will be changed to a 
 #' numeric that is not "initial.pick" or "open_goat_door".
 #' 
-#' @param open_goat_door A numeric representing the door that the host has already opened.
+#' @param open_goat_door A numeric representing the door that 
+#' the host has already opened.
 #' 
-#' @param initial.pick A numeric representing the door that the contestant initially chose. 
+#' @param initial.pick A numeric representing the door that 
+#' the contestant initially chose. 
 #' 
-#' @return Either a new numeric representing a new door the contestant chose or the same number as "initial.pick" 
+#' @return Either a new numeric representing a new door the contestant 
+#' chose or the same number as "initial.pick" 
 #' if the contestant decides to stay. 
 #' 
 #' @examples
@@ -169,17 +181,29 @@ change_door <- function( stay=T, opened.door, a.pick )
 #'  Determine if the contestant wins
 #'  
 #' @description 
-#' `determine_winner()` checks whether or not the door number with the car matches with
-#' the contestant's final pick. It will generate a character string of either "WIN" or "LOSE". 
+#' `determine_winner()` checks whether or not the door
+#'  number with the car matches with
+#' the contestant's final pick. It will generate a 
+#' character string of either "WIN" or "LOSE". 
 #' 
 #' @details
-#' If the 
+#' If the final pick matches with the door number that represents
+#' the car then the contestant wins. If it does not then the 
+#' contestant loses. At this point the contestant should either have
+#' the same number as their initial pick if they stayed or a different
+#' number that is different from the host's chosen door choice and their
+#' initial choice. 
 #' 
-#' @param
+#' @param final.pick is a numeric that represents the final door the 
+#' contestant has chosen
 #' 
-#' @return Either returns "WIN" or "LOSE" based on whether or not the final door 
-#' correlated with a number the contestant chooses is the door that 
-#' has the car behind it or a goat behind it.
+#' @param game is a vector representing the current
+#' game setup and where the goats and the cars are. 
+#' 
+#' @return Either returns "WIN" or "LOSE" based on 
+#' whether or not the final door 
+#' correlated with a number the contestant chooses 
+#' is the door that has the car behind it or a goat behind it.
 #' 
 #' @examples
 #' game.output
@@ -233,21 +257,24 @@ determine_winner <- function( final.pick, game )
 }
 
 
-
-
-
 #' @title
 #'  Let's play a game!
 #'  
-#' @description `play_game()` is a function that generates a full Monty Hall
+#' @description 
+#' `play_game()` is a function that generates a full Monty Hall
 #' game with the default being 2 goat doors and 1 car door. 
 #' 
-#' @details
+#' @details 
+#' All of the previous functions that we made are 
+#' now condensed neatly into one single function that will
+#' generate a game of Monty Hall. 
 #' 
 #' @param ... no arguments are used by the function.
 #' 
-#' @return A data frame representing the set up, the initial door the contestant
-#' chooses, the door the host chooses, if the contestant switches doors, and if
+#' @return A data frame representing the set up, 
+#' the initial door the contestant
+#' chooses, the door the host chooses, 
+#' if the contestant switches doors, and if
 #' the contestant wins or loses. 
 #' 
 #' @examples
@@ -280,7 +307,8 @@ play_game <- function( )
 #'  
 #' @description
 #' `play_n_games` generates a new game that consists of two doors
-#'   with goats behind them, and one with a car and repeats the same set up
+#'   with goats behind them, and one with a car 
+#'   and repeats the same set up
 #'   for n amount of times.
 #' 
 #' @details
@@ -300,8 +328,11 @@ play_game <- function( )
 #' @param n a numeric that represents how many simulations or runs of the game
 #' we should do. The default is n=100, or 100 rounds. 
 #' 
-#' @return A table with decimal numerics representing the percentage of how many wins and 
-#' losses the contestant got categorized by if they switched their initial door choice or
+#' @return 
+#' A table with decimal numerics representing 
+#' the percentage of how many wins and 
+#' losses the contestant got categorized by if they 
+#' switched their initial door choice or
 #' if they stayed with their initial choice. 
 #' 
 #' @examples
