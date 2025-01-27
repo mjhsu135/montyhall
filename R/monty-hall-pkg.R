@@ -65,9 +65,11 @@ select_door <- function( )
 #' @title
 #'  Host will open a goat door
 #'  
-#' @description
+#' @description `open_goat_door()`
+#' 
 #' @details
-#' @param create.game a vector representing the current game setup in the form of
+#' 
+#' @param create_game a vector representing the current game setup in the form of
 #' how many goats there are and how many cars there are (ex: c("goat", "goat", "car"))
 #' 
 #' @param select.door a numeric representing the door the contestant chooses which is 
@@ -77,12 +79,12 @@ select_door <- function( )
 #' a door the contestant has chosen. 
 #' 
 #' @examples
-#' game.output <- create.game()
+#' game.output <- create_game()
 #' game.output
 #' my.initial.pick <- select.door()
 #' my.initial.pick
 #' 
-#' open.goat.door( game.output, my.initial.pick )
+#' open_goat_door( game.output, my.initial.pick )
 #' 
 #' @export
 open_goat_door <- function( game, a.pick )
@@ -107,20 +109,34 @@ open_goat_door <- function( game, a.pick )
 #' @title
 #'  Contestant stays or switches their initial door
 #'  
-#' @description
-#' @details
-#' @param
-#' @return 
-#' @examples
-#' game.output <- create.game()
-#' my.initial.pick <- select.door()
-#' opened.goat.door <- open.goat.door( game.output, my.initial.pick )
+#' @description `change_door()`
 #' 
-#' my.final.pick.stay <- switch.door( stay=T, 
+#' @details
+#' 
+#' @param stay=T A logical where if stay is T or TRUE, then the code will keep the contestant's
+#' initial choice, that is, the previous parameter "select.door".
+#' 
+#' @param stay=F A logical where if stay is F or FALSE, then the code will change the contestant's
+#' initial choice, that is, the previous parameter "select.door" will be changed to a 
+#' numeric that is not "initial.pick" or "open_goat_door".
+#' 
+#' @param open_goat_door A numeric representing the door that the host has already opened.
+#' 
+#' @param initial.pick A numeric representing the door that the contestant initially chose. 
+#' 
+#' @return Either a new numeric representing a new door the contestant chose or the same number as "initial.pick" 
+#' if the contestant decides to stay. 
+#' 
+#' @examples
+#' game.output <- create_game()
+#' my.initial.pick <- select.door()
+#' opened.goat.door <- open_goat_door( game.output, my.initial.pick )
+#' 
+#' my.final.pick.stay <- change_door( stay=T, 
 #' opened.door=opened.goat.door, 
 #' a.pick=my.initial.pick )
 #' 
-#' my.final.pick.switch <- switch.door( stay=F, 
+#' my.final.pick.switch <- change_door( stay=F, 
 #' opened.door=opened.goat.door, 
 #' a.pick=my.initial.pick )
 #' 
@@ -146,9 +162,12 @@ change_door <- function( stay=T, opened.door, a.pick )
 #' @title
 #'  Determine if the contestant wins
 #'  
-#' @description
+#' @description `determine_winner()`
+#' 
 #' @details
+#' 
 #' @param
+#' 
 #' @return Either returns "WIN" or "LOSE" based on whether or not the final door 
 #' correlated with a number the contestant chooses is the door that 
 #' has the car behind it or a goat behind it.
@@ -157,18 +176,18 @@ change_door <- function( stay=T, opened.door, a.pick )
 #' game.output
 #' my.initial.pick
 #' 
-#' my.final.pick <- switch.door( stay=T, 
+#' my.final.pick <- change_door( stay=T, 
 #' opened.door=opened.door, 
 #' a.pick=my.initial.pick )
 #' 
-#' determine.winner( final.pick=my.final.pick, 
+#' determine_winner( final.pick=my.final.pick, 
 #'game=game.output )
 #'
-#'my.final.pick <- switch.door( stay=F, 
+#'my.final.pick <- change_door( stay=F, 
 #'opened.door=opened.door, 
 #'a.pick=my.initial.pick )
 #'
-#'determine.winner( final.pick=my.final.pick, 
+#'determine_winner( final.pick=my.final.pick, 
 #'game=game.output )
 #'
 #'#' @examples if contestant stays
@@ -178,7 +197,7 @@ change_door <- function( stay=T, opened.door, a.pick )
 #' paste0( "The opened goat door: ", opened.goat.door )
 #' paste0( "My final selection: ", my.final.pick.stay )
 #' paste0( "GAME OUTCOME:" )
-#' determine.winner( final.pick=my.final.pick.stay, 
+#' determine_winner( final.pick=my.final.pick.stay, 
 #' game=game.output )
 #' 
 #' @examples if contestant switches
@@ -188,7 +207,7 @@ change_door <- function( stay=T, opened.door, a.pick )
 #' paste0( "The opened goat door: ", opened.goat.door )
 #' paste0( "My final selection: ", my.final.pick.switch )
 #' paste0( "GAME OUTCOME:" )
-#' determine.winner( final.pick=my.final.pick.switch, 
+#' determine_winner( final.pick=my.final.pick.switch, 
 #'                  game=game.output )
 #'
 #' @export
