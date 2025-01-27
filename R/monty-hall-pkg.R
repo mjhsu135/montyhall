@@ -32,17 +32,15 @@ create_game <- function(num.goats=2,num.cars=1)
     return( a.game )
 }
 
-
-
 #' @title
 #'  Contestant will select a door
 #'  
 #' @description    
 #' `select_door()` generates a number that correlates to one of the three doors. 
-#' This number represents the door the contestant chooses initially at the beginning
-#' of the game. 
 #' 
 #' @details
+#' This number represents the door the contestant chooses initially at the beginning
+#' of the game.
 #' 
 #' @param ... no arguments are used by the function.
 #' 
@@ -65,9 +63,13 @@ select_door <- function( )
 #' @title
 #'  Host will open a goat door
 #'  
-#' @description `open_goat_door()`
+#' @description 
+#' `open_goat_door()` generates a number that represents a goat door that the host opens. 
 #' 
 #' @details
+#' The number that is generated correlates to the door that the host chooses.
+#' It will always be a goat door and it will never be the same door that the contestant
+#' has already chosen. 
 #' 
 #' @param create_game a vector representing the current game setup in the form of
 #' how many goats there are and how many cars there are (ex: c("goat", "goat", "car"))
@@ -109,9 +111,14 @@ open_goat_door <- function( game, a.pick )
 #' @title
 #'  Contestant stays or switches their initial door
 #'  
-#' @description `change_door()`
+#' @description 
+#' `change_door()` is a function that determines if the contestant will change the door
+#' and what their next chosen door is. It will generate a numeric. 
 #' 
 #' @details
+#' This number that is generated will either be the same number as the initial pick
+#' if the contestant stays or it will be a number that is not what they initially chose nor
+#' a number that correlates to the door the host has chosen.
 #' 
 #' @param stay=T A logical where if stay is T or TRUE, then the code will keep the contestant's
 #' initial choice, that is, the previous parameter "select.door".
@@ -158,13 +165,15 @@ change_door <- function( stay=T, opened.door, a.pick )
 }
 
 
-
 #' @title
 #'  Determine if the contestant wins
 #'  
-#' @description `determine_winner()`
+#' @description 
+#' `determine_winner()` checks whether or not the door number with the car matches with
+#' the contestant's final pick. It will generate a character string of either "WIN" or "LOSE". 
 #' 
 #' @details
+#' If the 
 #' 
 #' @param
 #' 
@@ -190,7 +199,7 @@ change_door <- function( stay=T, opened.door, a.pick )
 #'determine_winner( final.pick=my.final.pick, 
 #'game=game.output )
 #'
-#'#' @examples if contestant stays
+#' @examples if contestant stays
 #' paste0( "GAME SETUP" )
 #' game.output
 #' paste0( "My initial selection: ", my.initial.pick )
@@ -232,8 +241,11 @@ determine_winner <- function( final.pick, game )
 #'  
 #' @description `play_game()` is a function that generates a full Monty Hall
 #' game with the default being 2 goat doors and 1 car door. 
+#' 
 #' @details
-#' @param
+#' 
+#' @param ... no arguments are used by the function.
+#' 
 #' @return A data frame representing the set up, the initial door the contestant
 #' chooses, the door the host chooses, if the contestant switches doors, and if
 #' the contestant wins or loses. 
@@ -267,7 +279,24 @@ play_game <- function( )
 #'  Let's play 100 games!!
 #'  
 #' @description
+#' `play_n_games` generates a new game that consists of two doors
+#'   with goats behind them, and one with a car and repeats the same set up
+#'   for n amount of times.
+#' 
 #' @details
+#' 
+#'   The game setup replicates the game on the TV show "Let's
+#'   Make a Deal" where there are three doors for a contestant
+#'   to choose from, one of which has a car behind it and two
+#'   have goats. The contestant selects a door, then the host
+#'   opens a door to reveal a goat, and then the contestant is
+#'   given an opportunity to stay with their original selection
+#'   or switch to the other unopened door. There was a famous
+#'   debate about whether it was optimal to stay or switch when
+#'   given the option to switch, so this simulation was created
+#'   to test both strategies.
+#'
+#' 
 #' @param n a numeric that represents how many simulations or runs of the game
 #' we should do. The default is n=100, or 100 rounds. 
 #' 
